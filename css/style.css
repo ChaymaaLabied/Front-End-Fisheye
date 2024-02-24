@@ -44,7 +44,29 @@ h1 {
     font-size: 36px;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.photographer_section img {
+    width: 250px;
+    height: 300px;
+}
+
+
+.media-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+video {
+    width: 20rem;
+    height: 10rem;
+}
+
+.photographer-details>img {
+    width: 20rem;
+    height: 10rem;
+}
+
+.defilement img,
+.defilement video {
+    display: none
 }
