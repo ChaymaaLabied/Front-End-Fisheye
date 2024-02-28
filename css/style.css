@@ -17,6 +17,7 @@ header {
 h1 {
     color: #901C1C;
     margin-right: 100px;
+    font-weight: 100;
 }
 
 .logo {
@@ -27,26 +28,50 @@ h1 {
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    grid-column-gap: 120px;
+    grid-row-gap: 40px;
     margin-top: 100px;
 }
-
+.photographer_section a {
+    text-decoration: none;
+}
 .photographer_section article {
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 5px;
 }
 
-.photographer_section article h2 {
+.photographerName {
     color: #D3573C;
     font-size: 36px;
+    margin: auto;
+    font-weight: 100;
+}
+.cityAndCountry {
+    color: #901C1C;
+    font-size: 13px;
+    margin: auto;
+}
+.tagline {
+    color: black;
+    font-size: 10px;
+    margin: auto;
+}
+.price {
+    color: #757575;
+    margin: auto;
+    font-size: 9px;
 }
 
 .photographer_section img {
-    width: 250px;
-    height: 300px;
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 10px;
 }
 
 

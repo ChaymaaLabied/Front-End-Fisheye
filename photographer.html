@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -23,22 +24,33 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
         <article id="photographer-details">
-          <img />
-          <h2></h2>
-          <p class="location"></p>
-          <p class="tagLine"></p>
-          <label for="photographer-filter">Trier par</label>
-          <select id="photographer-filter">
-            <option>Date</option>
-            <option>Popularité</option>
-            <option>Titre</option>
-          </select>
+          <div>
+            <h2 class="photographerName"></h2>
+            <p class="location"></p>
+            <p class="tagLine"></p>
+          </div>
+          <button class="contact_button" onclick="displayModal()">
+            Contactez-moi
+          </button>
+          <img class="photographerPhotoId"/>
         </article>
-        <div class="media-list"></div>
+      </div>
+      <div class="photographerFilterDiv">
+        <label for="photographer-filter">Trier par</label>
+        <select id="photographer-filter">
+          <option>Date</option>
+          <option>Popularité</option>
+          <option>Titre</option>
+        </select>
+      </div>
+      <div class="media-list"></div>
+      <div class="encart">
+        <div class="totalLikesElement">
+          <span class="totalLikes"></span>
+          <i class="icon fa-solid fa-heart"></i>
+        </div>
+        <span class="PricePerDay"></span>
       </div>
     </main>
     <div id="contact_modal">
@@ -81,6 +93,7 @@
         </div>
       </div>
     </div>
+    <script src="/scripts/utils/GetPhotographers.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/templates/photographer.js"></script>
