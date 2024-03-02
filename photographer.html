@@ -20,29 +20,77 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" aria-label="Retourner à la page d'accueil">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
+    <main id="main" aria-hidden="false" class="opened">
+      <div class="photograph-header" aria-label="Présentation du photographe">
         <article id="photographer-details">
           <div>
             <h2 class="photographerName"></h2>
             <p class="location"></p>
             <p class="tagLine"></p>
           </div>
-          <button class="contact_button" onclick="displayModal()">
+          <button
+            class="contact_button"
+            onclick="displayModal()"
+            aria-label="cliquer ici pour ouvrir le formulaire de contact"
+          >
             Contactez-moi
           </button>
-          <img class="photographerPhotoId"/>
+          <img class="photographerPhotoId" />
         </article>
       </div>
-      <div class="photographerFilterDiv">
-        <label for="photographer-filter">Trier par</label>
-        <select id="photographer-filter">
-          <option>Date</option>
-          <option>Popularité</option>
-          <option>Titre</option>
-        </select>
+      <div class="filter">
+        <span class="filter_title">Trier par</span>
+        <div class="dropdown">
+          <button
+            class="btn_list"
+            type="button"
+            role="button"
+            tabindex="0"
+            aria-haspopup="listbox"
+          >
+            <span id="current_filter">Popularité</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <ul
+            class="dropdown_content"
+            aria-hidden="true"
+            role="listbox"
+            tabindex="0"
+          >
+            <li
+              class="menu-item"
+              role="option"
+              aria-selected="true"
+              tabindex="0"
+            >
+              <button>Titre</button>
+            </li>
+            <li
+              class="menu-item"
+              role="option"
+              aria-selected="true"
+              tabindex="0"
+            >
+              <button>Popularité</button>
+            </li>
+            <li
+              class="menu-item"
+              role="option"
+              aria-selected="true"
+              tabindex="0"
+            >
+              <button>Date</button>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="media-list"></div>
       <div class="encart">
@@ -53,44 +101,114 @@
         <span class="PricePerDay"></span>
       </div>
     </main>
-    <div id="contact_modal">
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-modal="true"
+      aria-describedby="modalTitle"
+      aria-labelledby="contacte me"
+    >
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="modalTitle" class="modalTitle">Contactez-moi</h2>
+          <button
+            class="closeBtn"
+            aria-label="Fermer la modale"
+            onclick="closeModal()"
+          >
+            <img
+              src="assets/icons/close.svg"
+              alt="button pour fermer le modal"
+            />
+          </button>
         </header>
-        <form>
+        <span class="modal_name"></span>
+        <form class="contact_form" method="post" action="#">
           <div>
-            <label>Prénom</label>
-            <input name="name" />
+            <label for="firstName">Prénom</label>
+            <input
+              type="text"
+              id="firstName"
+              name="LastName"
+              aria-label="firstName"
+              aria-required="true"
+              aria-invalid="false"
+              class="input-form"
+            />
           </div>
           <div>
-            <label>Nom</label>
-            <input name="lastName" />
+            <label for="LastName">Nom</label>
+            <input
+              type="text"
+              id="LastName"
+              name="lastName"
+              aria-label="LastName"
+              aria-required="true"
+              aria-invalid="false"
+              class="input-form"
+            />
           </div>
           <div>
-            <label>Email</label>
-            <input name="email" />
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              aria-label="email"
+              aria-required="true"
+              aria-invalid="false"
+              class="input-form"
+            />
           </div>
           <div>
-            <label>Message</label>
-            <textarea name="message"> </textarea>
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              cols="71"
+              aria-label="message"
+              aria-required="true"
+              aria-invalid="false"
+            >
+            </textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button
+            type="submit"
+            value="Envoyer"
+            id="envoi"
+            aria-label="envoyer"
+            class="contact_button"
+          >
+            Envoyer
+          </button>
         </form>
       </div>
     </div>
     <div id="lightbox">
-      <div class="modal-lightbox">
-        <img src="assets/icons/close.svg" onclick="closeLightbox()" />
-        <div class="defilement">
-          <button id="prev">Prev</button>
+      <button id="iconCloseLightBox">
+        <i class="fa-solid fa-xmark" onclick="closeLightbox()"></i>
+      </button>
+      <div class="defilement">
+        <button id="prev" aria-label="Previous image" role="link">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <div class="mediaAndTitle">
           <img class="mediaLightBox" />
-          <video id="video-lightbox" width="320" height="240" controls>
+          <video
+            id="video-lightbox"
+            width="320"
+            height="240"
+            controls
+            onclick="closeLightbox()"
+          >
             <source src="" type="video/mp4" />
           </video>
-          <button id="next">Next</button>
+          <h3 class="mediaTitle"></h3>
         </div>
+        <button id="next" aria-label="Next image" role="link">
+          <i class="fa fa-chevron-right"></i>
+        </button>
       </div>
     </div>
     <script src="/scripts/utils/GetPhotographers.js"></script>
