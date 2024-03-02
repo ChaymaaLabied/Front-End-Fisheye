@@ -185,24 +185,25 @@
         </form>
       </div>
     </div>
-    <div id="lightbox">
-      <button id="iconCloseLightBox">
-        <i class="fa-solid fa-xmark" onclick="closeLightbox()"></i>
+    <div id="lightbox"role="dialog" aria-label="image closeup view">
+      <button id="iconCloseLightBox" role="button" onclick="closeLightbox()">
+        <i class="fa-solid fa-xmark"></i>
       </button>
       <div class="defilement">
         <button id="prev" aria-label="Previous image" role="link">
           <i class="fa fa-chevron-left"></i>
         </button>
         <div class="mediaAndTitle">
-          <img class="mediaLightBox" />
+          <img class="mediaLightBox" aria-role="img"/>
           <video
             id="video-lightbox"
-            width="320"
-            height="240"
-            controls
+            src="" type="video/mp4"
+            preload="metadata"
+            controls="true"
+            aria-label="title"
             onclick="closeLightbox()"
           >
-            <source src="" type="video/mp4" />
+            <source  />
           </video>
           <h3 class="mediaTitle"></h3>
         </div>

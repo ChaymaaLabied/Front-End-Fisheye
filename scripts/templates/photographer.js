@@ -77,6 +77,7 @@ function mediaTemplate(mediaData) {
         const imageLightBox = document.querySelector(".mediaLightBox");
         imageLightBox.style.display = "block";
         imageLightBox.setAttribute("src", event.target.src);
+        imageLightBox.setAttribute('alt',mediaData.title)
         // console.log(event.target.src)
         let mediaTitle = document.querySelector('.mediaTitle')
         mediaTitle.textContent = mediaData.title
@@ -326,7 +327,7 @@ function setLightBoxListeners(mediaList, id) {
     }
     const mediaLightBoxElt = document.querySelector(".mediaLightBox"); //modifier le nom imgLightBoxElt
     const videoElement = document.querySelector("#video-lightbox"); // vidLightBoxElt
-    const sourceElement = document.querySelector("#video-lightbox source"); //srcVideoElt
+    // const sourceElement = document.querySelector("#video-lightbox source"); //srcVideoElt
     let mediaTitle = document.querySelector('.mediaTitle')
     mediaTitle.textContent = media.title
     // console.log(mediaTitle)
@@ -335,10 +336,11 @@ function setLightBoxListeners(mediaList, id) {
       videoElement.style.display = "none";
       mediaLightBoxElt.style.display = "block";
       mediaLightBoxElt.setAttribute("src", `assets/media/${id}/${media.image}`);
+      mediaLightBoxElt.setAttribute('alt',media.title)
     } else if (media.video) {
       mediaLightBoxElt.style.display = "none";
       videoElement.style.display = "block";
-      sourceElement.setAttribute("src", `assets/media/${id}/${media.video}`);
+      videoElement.setAttribute("src", `assets/media/${id}/${media.video}`);
     }
     selectedMediaId = media.id;
   }
