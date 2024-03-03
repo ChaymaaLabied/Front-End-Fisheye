@@ -10,7 +10,7 @@ function photographerTemplate(photographerData) {
   // retourne la carte de chaque photographer (lien  cliquable)
   function getUserCardDOM() {
     const aElement = document.createElement("a");
-    aElement.setAttribute("href", `photographer.html?id=${id}`);
+    aElement.setAttribute("href", `./photographer.html?id=${id}`);
     const article = document.createElement("article");
     const img = document.createElement("img");
     img.setAttribute("src", picture);
