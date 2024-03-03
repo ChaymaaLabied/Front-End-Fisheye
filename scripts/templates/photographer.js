@@ -10,7 +10,7 @@ function photographerTemplate(photographerData) {
   // retourne la carte de chaque photographer (lien  cliquable)
   function getUserCardDOM() {
     const aElement = document.createElement("a");
-    aElement.setAttribute("href", `/photographer.html?id=${id}`);
+    aElement.setAttribute("href", `photographer.html?id=${id}`);
     const article = document.createElement("article");
     const img = document.createElement("img");
     img.setAttribute("src", picture);
@@ -187,14 +187,14 @@ function getEncartPhotographer(totalLikes, price) {
   return encart;
 }
 
-// Ajout d'un listner click sur le filtre pour le tri by fatifa
+// Ajout d'un listner click sur le filtre pour le tri 
 
 const filterMenuButton = document.querySelector(".btn_list");
 const filterMenu = document.querySelector(".dropdown_content");
-filterMenuButton.addEventListener("click", dropdown);
+filterMenuButton.addEventListener("click", dropdown); // need to be in a function or f fichier bèadha 
 // la declaration de la fonction dropdown qui 
 function dropdown() {
-  const filterButtons = document.querySelectorAll(".dropdown_content button");// didnt use it 
+  // const filterButtons = document.querySelectorAll(".dropdown_content button");// didnt use it 
   const isExpanded = filterMenuButton.getAttribute("aria-expanded") === "true" || false;
   const btnListStyle = document.querySelector('.btn_list')
 
