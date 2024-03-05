@@ -1,77 +1,50 @@
-
-#contact_modal {
-    display: none;
-}
-
-#lightbox {
-    display: none;
-    /* border-radius: 5px;
-    background-color: #56b58c; */
-    /* width: 50%; */
-    /* display: flex;
+#main {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between; */
-    /* padding: 35px;
-    margin: auto; */
-    /* left: 10rem; */
-    /* width: 93%;
-    padding: 5rem 0 0 5rem; */
+    gap: 3rem;
+    margin: 0 100px;
+}
 
-    width: 100%;
-    z-index: 100;
-    top: 0px;
-    bottom: 0px;
-}
-#next {
-    border: none;
-    width: 20px;
-    height: 30px;
-    color: #901C1C;
-    /* position: absolute; */
-    top: 50%;
-    right: 8%;
-    margin-top: -14px;
-    z-index: 11;
-    cursor: pointer;
-    background-color: transparent;
-    font-size: 40px;
-}
+/* photgrapher */
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 100%;
 }
-
-
-.media-list img {
-    height: 300px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-}
-.media-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 5rem;
-    grid-row-gap: 1.5rem;
-    height:100%;
-}
-.titleAndLikesOfMedia {
+#photographer-details {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    color: #901C1C;
+    justify-content: space-between;
 
 }
-.titleAndLikesOfMedia h2 {
-    margin: 5px;
+
+.photographerPhotoId {
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+}
+.location {
+    color: #901C1C;
+    font-size: 24px;
+    margin: auto;
+}
+.photographerName {
+    color: #D3573C;
+    font-size: 64px;
+    margin: auto;
     font-weight: 100;
 }
-.likesAndIconeDiv {
-    display: flex;
-    gap: 5px;
-    align-items: center;
+.tagLine {
+    color: #525252;
+    font-size: 18px;
+}
+
+/* contact modal */
+
+#contact_modal {
+    display: none;
 }
 
 
@@ -98,7 +71,6 @@
     background-color: #DB8876;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
     padding: 35px;
     margin: auto;
@@ -153,7 +125,72 @@ form input {
     border-radius: 5px;
 }
 
+/* affichage des medias  */
+.likesAndIconeDiv {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.media-list img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.media-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 5rem;
+    grid-row-gap: 1.5rem;
+    height:100%;
+}
+.titleAndLikesOfMedia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #901C1C;
 
+}
+.titleAndLikesOfMedia h2 {
+    margin: 5px;
+    font-weight: 100;
+
+}
+.mediaAndTitle {
+    display: flex;
+    flex-direction: column;
+}
+.mediaTitle {
+    color: #901C1C;
+}
+.media-list video {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+/* lightbox */
+#lightbox {
+    display: none;
+    width: 100%;
+    z-index: 100;
+    top: 0px;
+    bottom: 0px;
+}
+#next {
+    border: none;
+    width: 20px;
+    height: 30px;
+    color: #901C1C;
+    top: 50%;
+    right: 8%;
+    margin-top: -14px;
+    z-index: 11;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 40px;
+}
 .mediaLightBox {
 
     max-width: 100%;
@@ -172,22 +209,49 @@ form input {
     justify-content: space-around;
     height: 100%;
 }
+#next {
+
+    border: none;
+    color: #901C1C;
+    z-index: 11;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 3rem;
+  }
+
+  #video-lightbox { 
+ 
+    max-width: 100%;
+    height: 62rem;
+    width: 32rem;
+    border-radius: 5px;
+    max-height: 35rem;
+  } 
+  #iconCloseLightBox {
+
+    position: absolute;
+    top: 4%;
+    right: 8%;
+    cursor: pointer;
+    color: #901c1c;
+    background-color: transparent;
+    border: none;
+    font-size: 3rem;
+    
+  }
+  #prev {
+    border: none;
+    color: #901C1C;
+    margin-top: -14px;
+    z-index: 11;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 3rem;
+  }
 
 
-#photographer-details {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    /* margin: 1rem; */
-}
 
-#main {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    margin: 0 100px;
-}
+/* encart */
 .encart {
     display: flex;
     align-items: center;
@@ -200,27 +264,6 @@ form input {
     height: 3rem;
     border-radius: 4px 4px 0px 0px;
     font-weight: 600;
-}
-.photographerPhotoId {
-    border-radius: 50%;
-    height: 10rem;
-    width: 10rem;
-    object-fit: cover;
-}
-.location {
-    color: #901C1C;
-    font-size: 24px;
-    margin: auto;
-}
-.photographerName {
-    color: #D3573C;
-    font-size: 64px;
-    margin: auto;
-    font-weight: 100;
-}
-.tagLine {
-    color: #525252;
-    font-size: 18px;
 }
 #message {
     border: none;
@@ -235,7 +278,7 @@ form input {
     font-weight: normal;
     text-align: left;
 }
-/* icic commence scc de fatifa */
+/* filters */
 .filter {
     display: flex;
     align-items: center;
@@ -258,7 +301,7 @@ form input {
   }
   
   .dropdown {
-    position: relative; /* a enlever wa9ila */
+    position: relative; 
     height: 100%;
     
   }
@@ -306,61 +349,4 @@ form input {
     align-items: center;
     justify-content: space-between;
   }
-  .media-list video {
-    height: 300px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-  }
-  #iconCloseLightBox {
-    /* right: 7%;
-    font-size: x-large; */
-    
-    
-    position: absolute;
-    top: 4%;
-    right: 8%;
-    cursor: pointer;
-    color: #901c1c;
-    background-color: transparent;
-    border: none;
-    font-size: 3rem;
-    
-  }
 
-  #prev {
-    border: none;
-    color: #901C1C;
-    margin-top: -14px;
-    z-index: 11;
-    cursor: pointer;
-    background-color: transparent;
-    font-size: 3rem;
-  }
-
-  #next {
-
-    border: none;
-    color: #901C1C;
-    z-index: 11;
-    cursor: pointer;
-    background-color: transparent;
-    font-size: 3rem;
-  }
-
-  #video-lightbox { 
-    /* c le meme qie midialightbox */
-
-    max-width: 100%;
-    height: 62rem;
-    width: 32rem;
-    border-radius: 5px;
-    max-height: 35rem;
-  } 
-.mediaAndTitle {
-    display: flex;
-    flex-direction: column;
-}
-.mediaTitle {
-    color: #901C1C;
-}

@@ -1,19 +1,16 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 function closeModal() {
 	const modal = document.getElementById("contact_modal")
 	modal.style.display = "none"
 	modal.classList.replace("opened", "closed")
 	modal.setAttribute("aria-hidden", "true")
-	// modal.setAttribute('tabindex', '-1');
-
 	const main = document.getElementById("main")
 	main.style.opacity = "1"
 	main.setAttribute("aria-hidden", "false")
-	// main.setAttribute('tabindex', '0');
 	main.classList.replace("closed", "opened")
 	const header = document.querySelector("header")
 	header.style.opacity = "1"
 	document.body.style.overflow = ""
-
 	const btnOpen = document.querySelector(".contact_button")
 	btnOpen.focus()
 	const focusableElements = document.querySelectorAll(
@@ -23,10 +20,6 @@ function closeModal() {
 		element.setAttribute("tabindex", "0")
 	})
 
-	//   const lastname = document.getElementById("LastName").value;
-	//   const email = document.getElementById("email").value;
-	//   const message = document.getElementById("message").value;
-	//   name = ''
 }
 
 function displayModal() {
@@ -42,12 +35,10 @@ function displayModal() {
 	modal.style.display = "block"
 	modal.classList.replace("closed", "opened")
 	modal.setAttribute("aria-hidden", "false")
-	// modal.setAttribute('tabindex', '0');
 	modal.focus()
 	// Désactivation de l'accessibilité du contenu principal de la page
 	const main = document.getElementById("main")
 	main.setAttribute("aria-hidden", "true")
-	// main.setAttribute("tabindex", "-1");
 	main.classList.replace("opened", "closed")
 	const header = document.querySelector("header")
 	document.body.style.overflow = "hidden"
@@ -67,14 +58,15 @@ const formElt = document.querySelector("form")
 formElt.addEventListener("submit", (event) => {
 	event.preventDefault()
 
-	//   let name = document.getElementById("firstName").value;
-	//   let lastname = document.getElementById("LastName").value;
-	//   let email = document.getElementById("email").value;
-	//   let message = document.getElementById("message").value;
+	  let name = document.getElementById("firstName").value
+	  let lastname = document.getElementById("LastName").value
+	  let email = document.getElementById("email").value
+	  // eslint-disable-next-line no-mixed-spaces-and-tabs
+	  let message = document.getElementById("message").value
 
-	//   console.log("Prénom:", name);
-	//   console.log("Nom:", lastname);
-	//   console.log("Email:", email);
-	//   console.log("Message:", message);
+	  console.log("Prénom:", name)
+	  console.log("Nom:", lastname)
+	  console.log("Email:", email)
+	  console.log("Message:", message)
 	closeModal()
 })
