@@ -60,6 +60,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.contact_button:hover {
+    background-color: #DB8876;
+    color: black;
+}
 #envoi {
     width: 140px;
     height: 60px;
