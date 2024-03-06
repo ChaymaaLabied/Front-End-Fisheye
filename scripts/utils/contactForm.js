@@ -13,29 +13,29 @@ function closeModal() {
 	document.body.style.overflow = ""
 	const btnOpen = document.querySelector(".contact_button")
 	btnOpen.focus()
+	//activation du focus sur certains éléments :
 	const focusableElements = document.querySelectorAll(
-		".btn_list, .menu-item, article , [tabindex]:not([tabindex=\"-1\"]),.photograph-header button",
+		".btn_list, .menu-item, article,[tabindex]:not([tabindex=\"-1\"]),.photograph-header button"
 	)
 	focusableElements.forEach((element) => {
 		element.setAttribute("tabindex", "0")
 	})
-
 }
 
 function displayModal() {
 	// Désactivation du focus sur certains éléments :
 	const focusableElements = document.querySelectorAll(
-		".btn_list, .menu-item, article,[tabindex]:not([tabindex=\"-1\"]),.photograph-header button",
+		".btn_list, .menu-item, article,[tabindex]:not([tabindex=\"-1\"]),.photograph-header button"
 	)
 	focusableElements.forEach((element) => {
 		element.setAttribute("tabindex", "-1")
 	})
-
 	const modal = document.getElementById("contact_modal")
 	modal.style.display = "block"
 	modal.classList.replace("closed", "opened")
 	modal.setAttribute("aria-hidden", "false")
 	modal.focus()
+
 	// Désactivation de l'accessibilité du contenu principal de la page
 	const main = document.getElementById("main")
 	main.setAttribute("aria-hidden", "true")
@@ -44,29 +44,30 @@ function displayModal() {
 	document.body.style.overflow = "hidden"
 	main.style.opacity = "0.5"
 	header.style.opacity = "0.5"
-	// Fermer le modal lorsque la touche 'Escape' est pressée
-	// Gestionnaire d'événements pour la touche "Escape"
-	document.addEventListener("keydown", (e) => {
-		const { key } = e
-		if (key === "Escape") {
-			closeModal()
-		}
-	})
 }
 
+// Fermer le modal lorsque la touche 'Escape' est pressée
+document.addEventListener("keydown", (e) => {
+	const { key } = e
+	if (key === "Escape") {
+		closeModal()
+	}
+})
+
+// la sousmission du formulaire et l'affichage des reponses dans la console
 const formElt = document.querySelector("form")
 formElt.addEventListener("submit", (event) => {
 	event.preventDefault()
 
-	  let name = document.getElementById("firstName").value
-	  let lastname = document.getElementById("LastName").value
-	  let email = document.getElementById("email").value
-	  // eslint-disable-next-line no-mixed-spaces-and-tabs
-	  let message = document.getElementById("message").value
+	let name = document.getElementById("firstName").value
+	let lastname = document.getElementById("LastName").value
+	let email = document.getElementById("email").value
+	// eslint-disable-next-line no-mixed-spaces-and-tabs
+	let message = document.getElementById("message").value
 
-	  console.log("Prénom:", name)
-	  console.log("Nom:", lastname)
-	  console.log("Email:", email)
-	  console.log("Message:", message)
+	console.log("Prénom:", name)
+	console.log("Nom:", lastname)
+	console.log("Email:", email)
+	console.log("Message:", message)
 	closeModal()
 })

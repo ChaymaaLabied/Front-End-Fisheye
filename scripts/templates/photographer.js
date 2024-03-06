@@ -58,11 +58,14 @@ function photographerTemplate(photographerData) {
 	}
 }
 
+// cette fontion a pour donner mediaData donc elle contient toute autre fct qui utilise ces données 
+// elle recupere et affiche toutes les données de chaque media d'un x photographe 
 function mediaTemplate(mediaData) {
 	const { photographerId, title, id } = mediaData
 	let { likes } = mediaData
 	// afficher toutes les media  photographer.html
 	// avec l'appel a la fct du lancement du lightBox lors du Click
+	// juste l'ouverture du lightbox et ce qui va avec cette ouverture
 	function getmedia() {
 		const article = document.createElement("article")
 		if (mediaData.image) {
@@ -72,10 +75,10 @@ function mediaTemplate(mediaData) {
 			img.classList.add("media")
 			img.addEventListener("click", (event) => {
 				displayLightbox()
-				const imageLightBox = document.querySelector(".mediaLightBox")
-				imageLightBox.style.display = "block"
-				imageLightBox.setAttribute("src", event.target.src)
-				imageLightBox.setAttribute("alt", mediaData.title)
+				const photoLightBoxElt = document.querySelector(".photo-LightBox") 
+				photoLightBoxElt.style.display = "block"
+				photoLightBoxElt.setAttribute("src", event.target.src)
+				photoLightBoxElt.setAttribute("alt", mediaData.title)
 				const mediaTitle = document.querySelector(".mediaTitle")
 				mediaTitle.textContent = mediaData.title
 				selectedMediaId = id
@@ -98,7 +101,8 @@ function mediaTemplate(mediaData) {
 			})
 			article.appendChild(video)
 		}
-		// creation des elements dans le DOM : titre et nb de like et icone sous chaque photo dans le dossier d'un photographer
+
+		// creation des elements dans le DOM : titre et nb de like et icone sous chaque media d'un x photgraphe
 		const mediaPhotographerDiv = document.createElement("div")
 		mediaPhotographerDiv.setAttribute("class", "titleAndLikesOfMedia")
 		const h2 = document.createElement("h2")
@@ -115,6 +119,7 @@ function mediaTemplate(mediaData) {
 		mediaPhotographerDiv.appendChild(likesElt)
 		article.appendChild(mediaPhotographerDiv)
 
+		// l'incrementation des likes juste une seule fois qu'on clique
 		function likesIncrementation() {
 			likes++
 			nbLikeElt.textContent = likes
@@ -145,8 +150,8 @@ function displayPhotographerMediasDOM(mediaList) {
 	return totalLikes
 }
 
+// la creation de l'encart 
 function getEncartPhotographer(totalLikes, price) {
-
 
 	const encart = document.querySelector(".encart")
 	const totalLikesElement = document.querySelector(".totalLikesElement")
@@ -164,121 +169,3 @@ function getEncartPhotographer(totalLikes, price) {
 }
 
 
-function sortMediaList(mediaList) {
-	// Fonctions de tri
-	function sortByDate(a, b) {
-		if (a.date < b.date) {
-			return -1
-		}
-		if (a.date > b.date) {
-			return 1
-		}
-		return 0
-	}
-	function sortByTitre(a, b) {
-		if (a.title < b.title) {
-			return -1
-		}
-		if (a.title > b.title) {
-			return 1
-		}
-		return 0
-	}
-	function sortByPopularity(a, b) {
-		if (a.likes < b.likes) {
-			return -1
-		}
-		if (a.likes > b.likes) {
-			return 1
-		}
-		return 0
-	}
-
-	// cette fonction point sur le select , pose une variable qui point sur la valeur de cette select puis pose
-	// un eventlistner et un switch case sur les choix de l'utilisateur , on applique la fonction  du tri
-	//  puis on affiche dans le DOM les elements triés .
-
-	const allFilters = Array.from(
-		document.querySelectorAll(".dropdown_content li button")
-	)
-	const currentFilter = document.querySelector("#current_filter")
-
-	allFilters.forEach((filter) => {
-
-		filter.addEventListener("click", () => {
-			const sortType = currentFilter.textContent
-			switch (sortType) {
-			case "Date":
-				mediaList.sort(sortByDate)
-				break
-			case "Titre":
-				mediaList.sort(sortByTitre)
-				break
-			case "Popularité":
-				mediaList.sort(sortByPopularity)
-				break
-			}
-			displayPhotographerMediasDOM(mediaList)
-		})
-	})
-}
-
-function setLightBoxListeners(mediaList, id) {
-	// defilement entre les medias soit photo ou video 
-	const prevButton = document.getElementById("prev")
-	const nextButton = document.getElementById("next")
-	function defiler(direction) {
-		// déclaration de la fonction defiler
-		const currentMediaIndex = mediaList.findIndex(
-			(elt) => elt.id === parseInt(selectedMediaId)
-		)
-		let media
-		if (direction === "previous") {
-			// media reçois l'element precedent si l'index actuel est sup à 0 sinon c-a-d si c'est 0
-			// elle va recevoir le dernier élement du tableau pour faire une boucle 
-			media =
-        currentMediaIndex > 0? mediaList[currentMediaIndex - 1] : mediaList[mediaList.length - 1]
-		} else if (direction === "next") {
-			// la meme chose ici mais à l'envers
-			// media reçois le premier element si on est sur la derniere photo
-			media =
-        currentMediaIndex === mediaList.length - 1 ? mediaList[0]: mediaList[currentMediaIndex + 1]
-		}
-		const mediaLightBoxElt = document.querySelector(".mediaLightBox") 
-		const videoElement = document.querySelector("#video-lightbox") 
-		const mediaTitle = document.querySelector(".mediaTitle")
-		mediaTitle.textContent = media.title
-		if (media.image) {
-			videoElement.style.display = "none"
-			mediaLightBoxElt.style.display = "block"
-			mediaLightBoxElt.setAttribute("src", `assets/media/${id}/${media.image}`)
-			mediaLightBoxElt.setAttribute("alt", media.title)
-		} else if (media.video) {
-			mediaLightBoxElt.style.display = "none"
-			videoElement.style.display = "block"
-			videoElement.setAttribute("src", `assets/media/${id}/${media.video}`)
-		}
-		selectedMediaId = media.id
-	}
-	document.addEventListener("keyup", (e) => {
-		switch (e.key) {
-		case "Escape":
-			closeLightbox()
-			break
-		case "ArrowLeft":
-			defiler("previous")
-			break
-		case "ArrowRight":
-			defiler("next")
-			break
-		}
-	})
-
-	prevButton.addEventListener("click", () => {
-		defiler("previous") // l'appel de la fonction défiler
-	})
-
-	nextButton.addEventListener("click", () => {
-		defiler("next")
-	})
-}

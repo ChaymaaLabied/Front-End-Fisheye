@@ -11,7 +11,6 @@ async function displayData(photographers) {
 
 async function init() {
 	// la déclaration de la focntion qui  Récupère les datas des photographes
-	// les acolades destructuring stuffs eviter test point === (await getPhotographers()).photographers
 	const { photographers } = await getPhotographers()
 	// l'appel de la fonction displayData
 	displayData(photographers)

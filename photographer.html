@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -43,7 +44,7 @@
           >
             Contactez-moi
           </button>
-          <img class="photographerPhotoId" />
+          <img class="photographerPhotoId" alt="" />
         </article>
       </div>
       <div class="filter">
@@ -57,7 +58,7 @@
             aria-haspopup="listbox"
           >
             <span id="current_filter">Popularité</span>
-            <i class="fas fa-chevron-down"></i>
+            <em class="fas fa-chevron-down"></em>
           </button>
           <ul
             class="dropdown_content"
@@ -96,7 +97,7 @@
       <div class="encart">
         <div class="totalLikesElement">
           <span class="totalLikes"></span>
-          <i class="icon fa-solid fa-heart"></i>
+          <em class="icon fa-solid fa-heart"></em>
         </div>
         <span class="PricePerDay"></span>
       </div>
@@ -185,35 +186,38 @@
         </form>
       </div>
     </div>
-    <div id="lightbox"role="dialog" aria-label="image closeup view">
+    <div id="lightbox" role="dialog" aria-label="image closeup view" class="closed">
       <button id="iconCloseLightBox" role="button" onclick="closeLightbox()">
-        <i class="fa-solid fa-xmark"></i>
+        <em class="fa-solid fa-xmark"></em>
       </button>
       <div class="defilement">
         <button id="prev" aria-label="Previous image" role="link">
-          <i class="fa fa-chevron-left"></i>
+          <em class="fa fa-chevron-left"></em>
         </button>
         <div class="mediaAndTitle">
-          <img class="mediaLightBox" aria-role="img"/>
+          <img class="photo-LightBox" aria-role="img" alt="" />
           <video
             id="video-lightbox"
-            src="" type="video/mp4"
+            src=""
+            type="video/mp4"
             preload="metadata"
             controls="true"
             aria-label="title"
             onclick="closeLightbox()"
           >
-            <source  />
+            <source />
           </video>
           <h3 class="mediaTitle"></h3>
         </div>
         <button id="next" aria-label="Next image" role="link">
-          <i class="fa fa-chevron-right"></i>
+          <em class="fa fa-chevron-right"></em>
         </button>
       </div>
     </div>
     <script src="scripts/utils/GetPhotographers.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/LightBox.js"></script>
+    <script src="scripts/utils/Dropdown.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/templates/photographer.js"></script>
   </body>
