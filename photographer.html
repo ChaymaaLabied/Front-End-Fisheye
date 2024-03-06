@@ -58,7 +58,7 @@
             aria-haspopup="listbox"
           >
             <span id="current_filter">Popularité</span>
-            <em class="fas fa-chevron-down"></em>
+            <em class="fas fa-chevron-down" aria-hidden="false" aria-role="icon"></em>
           </button>
           <ul
             class="dropdown_content"
@@ -97,7 +97,7 @@
       <div class="encart">
         <div class="totalLikesElement">
           <span class="totalLikes"></span>
-          <em class="icon fa-solid fa-heart"></em>
+          <em class="icon fa-solid fa-heart" aria-role="icon" aria-label="cliquer pour aimer"></em>
         </div>
         <span class="PricePerDay"></span>
       </div>
@@ -188,11 +188,11 @@
     </div>
     <div id="lightbox" role="dialog" aria-label="image closeup view" class="closed">
       <button id="iconCloseLightBox" role="button" onclick="closeLightbox()">
-        <em class="fa-solid fa-xmark"></em>
+        <em class="fa-solid fa-xmark" aria-hidden="true" aria-label="fermer le lightbox"aria-role="icon"></em>
       </button>
       <div class="defilement">
         <button id="prev" aria-label="Previous image" role="link">
-          <em class="fa fa-chevron-left"></em>
+          <em class="fa fa-chevron-left"aria-hidden="true" aria-label="aller à gauche"aria-role="icon"></em>
         </button>
         <div class="mediaAndTitle">
           <img class="photo-LightBox" aria-role="img" alt="" />
@@ -210,7 +210,7 @@
           <h3 class="mediaTitle"></h3>
         </div>
         <button id="next" aria-label="Next image" role="link">
-          <em class="fa fa-chevron-right"></em>
+          <em class="fa fa-chevron-right"aria-hidden="true"aria-label="aller à droite"aria-role="icon"></em>
         </button>
       </div>
     </div>
