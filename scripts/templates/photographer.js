@@ -72,6 +72,7 @@ function mediaTemplate(mediaData) {
 			const pics = `assets/media/${photographerId}/${mediaData.image}` 
 			const img = document.createElement("img")
 			img.setAttribute("src", pics)
+			img.setAttribute("alt", mediaData.title)
 			img.classList.add("media")
 			img.addEventListener("click", (event) => {
 				displayLightbox()
@@ -108,11 +109,13 @@ function mediaTemplate(mediaData) {
 		const h2 = document.createElement("h2")
 		const likesElt = document.createElement("div")
 		likesElt.setAttribute("class", "likesAndIconeDiv")
-		const iconLikes = document.createElement("i")
+		const iconLikes = document.createElement("em")
 		const nbLikeElt = document.createElement("span")
 		h2.textContent = title
 		nbLikeElt.textContent = likes
 		iconLikes.setAttribute("class", "fa-solid fa-heart")
+		iconLikes.setAttribute("aria-label","cliquer pour aimer")
+		iconLikes.setAttribute("aria-role","icon")
 		mediaPhotographerDiv.appendChild(h2)
 		likesElt.appendChild(nbLikeElt)
 		likesElt.appendChild(iconLikes)
