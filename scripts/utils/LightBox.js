@@ -9,6 +9,10 @@ function displayLightbox() {
 	main.style.opacity = "0"
 	header.style.opacity = "0"
 	main.classList.replace("opened","closed")
+	const iconLightBox = document.querySelectorAll(".fa")
+	iconLightBox.forEach((icon)=>{
+		icon.setAttribute("aria-hidden", "false")
+	})
 }
 
 // la declaration de la fonction de la fermeture du lightbox
@@ -25,6 +29,10 @@ function closeLightbox() {
 	main.style.opacity = "1"
 	header.style.opacity = "1"
 	main.classList.replace("closed", "opened")
+	const iconLightBox = document.querySelectorAll(".fa")
+	iconLightBox.forEach((icon)=>{
+		icon.setAttribute("aria-hidden", "true")
+	})
 }
 
 // le comportement à l'interieur du lightbox
