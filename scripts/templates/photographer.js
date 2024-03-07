@@ -14,6 +14,7 @@ function photographerTemplate(photographerData) {
 		const article = document.createElement("article")
 		const img = document.createElement("img")
 		img.setAttribute("src", picture)
+		img.setAttribute("alt","le photgrpaher :"+name)
 		const h2 = document.createElement("h2")
 		h2.textContent = name
 		h2.setAttribute("class", "photographerName")
@@ -36,7 +37,7 @@ function photographerTemplate(photographerData) {
 	}
 	// afficher les elements du photographers dans photographer.html
 	function displayPhotographerDetailsDOM() {
-	// récuperer les élements du photographers-details affichées dans photographer .html
+	// récuperer les élements de la section photographers-details pour les affichées dans photographer .html
 		const img = document.querySelector(".photographerPhotoId")
 		img.setAttribute("src", picture)
 		img.alt = `Photo du profil de ${name}`
@@ -58,7 +59,7 @@ function photographerTemplate(photographerData) {
 	}
 }
 
-// cette fontion a pour donner mediaData donc elle contient toute autre fct qui utilise ces données 
+// cette fontion a pour donneé mediaData donc elle contient toute autre fct qui utilise ces données 
 // elle recupere et affiche toutes les données de chaque media d'un x photographe 
 function mediaTemplate(mediaData) {
 	const { photographerId, title, id } = mediaData
@@ -84,6 +85,7 @@ function mediaTemplate(mediaData) {
 				mediaTitle.textContent = mediaData.title
 				selectedMediaId = id
 			})
+		
 			article.appendChild(img)
 		} else {
 			const vidd = `assets/media/${photographerId}/${mediaData.video}`

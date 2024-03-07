@@ -10,7 +10,7 @@ async function displayData(photographers) {
 }
 
 async function init() {
-	// la déclaration de la focntion qui  Récupère les datas des photographes
+	// la déclaration de la fonction qui  Récupère les datas des photographes
 	const { photographers } = await getPhotographers()
 	// l'appel de la fonction displayData
 	displayData(photographers)

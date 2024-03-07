@@ -63,7 +63,7 @@ function dropdownLaunch(){
 	const filterMenuButton = document.querySelector(".btn_list")
 	filterMenuButton.addEventListener("click", dropdown) 
 }
-// la declaration de la fonction dropdown 
+// la declaration de la fonction dropdown qui s'occupe de l'accessibilité du dropdown
 function dropdown() {
 	const filterMenuButton = document.querySelector(".btn_list")
 	const filterMenu = document.querySelector(".dropdown_content")
