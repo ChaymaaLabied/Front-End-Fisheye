@@ -15,7 +15,7 @@ function closeModal() {
 	btnOpen.focus()
 	//activation du focus sur certains éléments :
 	const focusableElements = document.querySelectorAll(
-		".btn_list, .menu-item, article,[tabindex]:not([tabindex=\"-1\"]),.photograph-header button"
+		".btn_list, .menu-item,[tabindex]:not([tabindex=\"-1\"]),.photograph-header button"
 	)
 	focusableElements.forEach((element) => {
 		element.setAttribute("tabindex", "0")

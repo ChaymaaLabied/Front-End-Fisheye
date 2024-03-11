@@ -35,7 +35,7 @@ function photographerTemplate(photographerData) {
 		aElement.appendChild(article)
 		return aElement
 	}
-	// afficher les elements du photographers dans photographer.html
+	// creer les elements du photographers dans photographer.html
 	function displayPhotographerDetailsDOM() {
 	// récuperer les élements de la section photographers-details pour les affichées dans photographer .html
 		const img = document.querySelector(".photographerPhotoId")
@@ -75,6 +75,10 @@ function mediaTemplate(mediaData) {
 			img.setAttribute("src", pics)
 			img.setAttribute("alt", mediaData.title)
 			img.classList.add("media")
+			img.setAttribute("tabindex",0)
+			img.setAttribute("data-id",id)
+			img.setAttribute("data-title",mediaData.title)
+			img.setAttribute("data-type","img")
 			img.addEventListener("click", (event) => {
 				displayLightbox()
 				const photoLightBoxElt = document.querySelector(".photo-LightBox") 
@@ -85,7 +89,7 @@ function mediaTemplate(mediaData) {
 				mediaTitle.textContent = mediaData.title
 				selectedMediaId = id
 			})
-		
+			// eventlisner sur enter ouvrir le lightbox
 			article.appendChild(img)
 		} else {
 			const vidd = `assets/media/${photographerId}/${mediaData.video}`
@@ -94,6 +98,8 @@ function mediaTemplate(mediaData) {
 			video.setAttribute("type", "video/mp4")
 			video.classList.add("media")
 			video.setAttribute("controls", true)
+			video.setAttribute("tabindex",0)
+			video.setAttribute("data-type","video")
 			video.addEventListener("click", (event) => {
 				displayLightbox()
 				const videoElement = document.querySelector("#video-lightbox")
@@ -102,8 +108,31 @@ function mediaTemplate(mediaData) {
 				videoElement.style.display = "block"
 				selectedMediaId = id
 			})
+
 			article.appendChild(video)
 		}
+		document.addEventListener("keydown", (e) => {
+			const { key } = e
+			if (key === "Enter") {
+				const element  = document.activeElement
+				selectedMediaId = element.dataset.id
+				if(element.dataset.type==="img"){
+					const photoLightBoxElt = document.querySelector(".photo-LightBox") 
+					photoLightBoxElt.style.display = "block"
+					photoLightBoxElt.setAttribute("src", element.src)
+					photoLightBoxElt.setAttribute("alt", element.dataset.title)
+					const mediaTitle = document.querySelector(".mediaTitle")
+					mediaTitle.textContent = element.dataset.title
+				}else if(element.dataset.type==="video"){
+					const videoElement = document.querySelector("#video-lightbox")
+					videoElement.setAttribute("controls", true)
+					videoElement.setAttribute("src", element.src)
+					videoElement.style.display = "block"
+				}
+				displayLightbox()
+			} 
+		})
+
 
 		// creation des elements dans le DOM : titre et nb de like et icone sous chaque media d'un x photgraphe
 		const mediaPhotographerDiv = document.createElement("div")
